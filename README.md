@@ -1,4 +1,4 @@
-# elBandolero
+# el Bandolero Bot
 
 Discord Bot made with python for a private server
 
