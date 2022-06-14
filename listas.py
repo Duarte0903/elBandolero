@@ -15,7 +15,7 @@ bando_quote = [
   ]
 
 # Lista de imagens 
-imagens = ["P1.jpeg","P2.jpg","P3.jpg","P4.jpg","P5.png","P6.jpeg"]
+imagens = ["pics/P1.jpeg","pics/P2.jpg","pics/P3.jpg","pics/P4.jpg","pics/P5.png","pics/P6.jpeg"]
 
 # Lista de quotes
 quotes = [
