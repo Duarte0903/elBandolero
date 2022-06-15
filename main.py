@@ -14,17 +14,17 @@ bot = commands.Bot(command_prefix = "$")
 
 @bot.event
 async def on_ready():
-   print("Bot is currently online!")
-
+  print("Bot is currently online!")
+  
 ############### Comandos ###############
-
+      
 @bot.command (brief = "-> La Famila")
 async def vin(ctx):
-   await ctx.reply("La Familia")
-  
+  await ctx.reply("La Familia")
+
 @bot.command (brief = "-> Dumb wisdom")
 async def quote(ctx):
-   await ctx.reply(random.choice(listas.quotes))
+  await ctx.reply(random.choice(listas.quotes))
 
 @bot.command (brief = "-> Russian Roulette")
 async def roulette(ctx):
@@ -44,18 +44,20 @@ async def meme(ctx):
             embed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
             await ctx.send(embed=embed)
 
-@bot.command(pass_context=True, brief = "-> Get pp size")
+@bot.command(brief = "-> Get pp size")
 async def size(ctx):
-  str = ":"
+  str = "8"
   num = random.randint(5, 100)
   res = str.ljust(num + len(str), "-")
-  await ctx.reply(res)
+  await ctx.reply(res+"D")
   if num <= 25:
    await ctx.reply(ctx.author.mention + "  Damn bro, that's small 😬")
   elif num >= 60:
     await ctx.reply(ctx.author.mention + "  Walking must be a problem uh 🍖")
   else:
     await ctx.reply(ctx.author.mention + "  Avarage is just fine ❤️")
+
+
 
 ############### Eventos ###############
 
@@ -78,6 +80,12 @@ async def on_message(message):
     await sendM(random.choice(listas.bando_quote))
 
   await bot.process_commands(message)
+
+async def on_member_join(self, member):
+    guild = member.guild
+    if guild.system_channel is not None:
+        to_send = f'Welcome {member.mention} to {guild.name}!'
+        await guild.system_channel.send(to_send)
 
 ############### Keep_alive ###############
 
