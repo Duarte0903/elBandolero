@@ -17,12 +17,12 @@ class Admin(commands.Cog):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You are not authorized for this action")
 
-    @commands.command(pass_context=True, brief="-> commnad + @member + role to remove role")
+    @commands.command(pass_context=True, brief="-> commnad + <role> to delete a role")
     @commands.has_permissions(manage_roles = True)
-    async def deleteRole(self, ctx, user : discord.Member, role_name):
+    async def deleteRole(self, ctx, role_name):
         role_object = discord.utils.get(ctx.message.guild.roles, name=role_name)
         await role_object.delete()
-        await ctx.send(f"{user.mention} is no longer {role_object}")
+        await ctx.send("Role deleted")
 
     @deleteRole.error
     async def delete_error(self, ctx,error):
