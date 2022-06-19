@@ -1,6 +1,6 @@
 # el Bandolero Bot
 
-![alt text](https://github.com/Duarte0903/elBandolero/blob/main/bandolero.jpg?raw=true)
+![alt text](https://github.com/Duarte0903/elBandolero/blob/main/pics/bandolero.jpg?raw=true)
 
 Discord Bot made with python for a private server
 
