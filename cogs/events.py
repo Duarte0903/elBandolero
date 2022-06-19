@@ -1,5 +1,7 @@
 from discord.ext import commands
 from discord.utils import get
+import listas
+import random
 
 
 class Events(commands.Cog):
@@ -11,6 +13,21 @@ class Events(commands.Cog):
     async def on_member_join(self,member):
       role = get(member.guild.roles, id=811682375456784404)
       await member.add_roles(role)
+
+    @commands.Cog.listener()
+    async def on_message(self, message):
+      if message.author == self.bot.user: 
+        return
+  
+      msg = message.content
+
+      sendM = message.channel.send
+
+      if any(word in msg for word in listas.atts):
+        await sendM("Diz bro <3")
+
+      if any(word in msg for word in listas.bando_words):
+        await sendM(random.choice(listas.bando_quote))
 
 
 def setup(bot):
