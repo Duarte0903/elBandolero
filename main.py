@@ -57,7 +57,10 @@ async def size(ctx):
   else:
     await ctx.reply(ctx.author.mention + "  Avarage is just fine ❤️")
 
-
+@bot.command(brief = "-> Casually nuke your mate")
+async def nuke(ctx, member:discord.Member):
+  await ctx.send (f"{ctx.author.mention} just nuked {member.mention}")
+  await ctx.send ("Here comes the sun 🌞")
 
 ############### Eventos ###############
 
@@ -81,11 +84,9 @@ async def on_message(message):
 
   await bot.process_commands(message)
 
-async def on_member_join(self, member):
-    guild = member.guild
-    if guild.system_channel is not None:
-        to_send = f'Welcome {member.mention} to {guild.name}!'
-        await guild.system_channel.send(to_send)
+@bot.event
+async def on_member_join(member):
+    print("Recognised that a member called " + member.name + " joined")
 
 ############### Keep_alive ###############
 
