@@ -1,6 +1,8 @@
 import discord
 import os
 import aiohttp
+import nacl
+from discord import FFmpegPCMAudio
 from discord.ext import commands
 from keepalive import keep_alive
 import random
@@ -84,9 +86,29 @@ async def on_message(message):
 
   await bot.process_commands(message)
 
-@bot.event
-async def on_member_join(member):
-    print("Recognised that a member called " + member.name + " joined")
+############### Audio ####################
+
+@bot.command(pass_context=True, brief="-> Bot joins voice channel")
+async def join(ctx):
+
+    if(ctx.author.voice):
+
+        channel = ctx.message.author.voice.channel
+
+        voice=await channel.connect() 
+
+    else:
+
+        await ctx.send("please join voice channel")
+
+
+@bot.command(brief="-> Bot leaves voice channel")
+async def leave(ctx):
+    voice_client = ctx.message.guild.voice_client
+    if voice_client.is_connected():
+        await voice_client.disconnect()
+    else:
+        await ctx.send("The bot is not connected to a voice channel.")
 
 ############### Keep_alive ###############
 
