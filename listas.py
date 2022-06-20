@@ -2,10 +2,6 @@
 
 bando_words = ['familia','carros','irmão','bandolero']
 
-bitch_words = ["jogar","vava","gay",".p https://open.spotify.com/track/6gXI1mXOO1N39k9x3uNy9B?si=4507cf751f9b4047"]
-
-atts = ["@everyone"]
-
 bando_quote = [
   'I live my life a quarter mile at a time',
   "I don't have friends, I have FAMILY",

@@ -23,8 +23,8 @@ class Events(commands.Cog):
 
       sendM = message.channel.send
 
-      if any(word in msg for word in listas.atts):
-        await sendM("Diz bro <3")
+      if msg == "@everyone":
+        await sendM("What's up bro <3")
 
       if any(word in msg for word in listas.bando_words):
         await sendM(random.choice(listas.bando_quote))
