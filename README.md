@@ -6,7 +6,7 @@ Discord Bot made with python for a private server.
 
 **Origin of the name:**
 
-El Bandolero is the infamous racer who managed to beat a Porsche Turbo
+El Bandolero is the infamous racer who managed to beat a Porsche Turbo <br>
 in is humble Nissan Maxima.
 
 **How it works:**
