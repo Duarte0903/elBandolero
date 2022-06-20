@@ -16,4 +16,4 @@ It is a general purpose bot. Includes commands to administer the server, <br>
 get posts from reddit and to do some silly stuff. I also reacts to events on <br>
 text channels. <br>
 
-Type **$help** to see about the commands you can use (some commands require admin role)
+**Note:** some commands require admin role
