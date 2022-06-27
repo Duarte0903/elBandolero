@@ -4,7 +4,7 @@
   <img width="300" height="200" src="https://github.com/Duarte0903/elBandolero/blob/main/pics/bandolero.jpg?raw=true">
 </p>
 
-Discord Bot made with python for a private server.
+Discord Bot made with python for a private server. <br>
 
 **Origin of the name:**
 
@@ -14,8 +14,8 @@ in is humble Nissan Maxima.
 **How it works:**
 
 The bot is hosted in repl it and uses UptimeRobot to keep running <br>
-It is a general purpose bot. Includes commands to administer the server, <br>
-get posts from reddit and to do some silly stuff. I also reacts to events on <br>
-text channels. <br>
+It is a general purpose bot. I basicly add features that I find interesting and usefull. <br> 
+Includes commands to administer the server, get posts from reddit<br>
+and to do some silly stuff. I also reacts to events on text channels.<br>
 
 **Note:** some commands require admin role
