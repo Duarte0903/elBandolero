@@ -2,7 +2,7 @@ import discord
 import os
 from discord.ext import commands
 from keepalive import keep_alive
-  
+
 TOKEN = os.environ.get("secret")
 
 intents = discord.Intents.default()
