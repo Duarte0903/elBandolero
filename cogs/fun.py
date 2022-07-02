@@ -12,14 +12,17 @@ class Fun(commands.Cog):
     async def vin(self, ctx):
       await ctx.reply("La Familia")
 
+  
     @commands.command (brief = "-> Russian Roulette")
     async def roulette(self, ctx):
        await ctx.reply(ctx.author.mention + random.choice(listas.roleta))
 
+  
     @commands.command (brief = "-> Mega funny image")
     async def pic(self, ctx):
        await ctx.reply(file=discord.File(random.choice(listas.imagens)))
 
+  
     @commands.command(brief = "-> Get pp size")
     async def size(self, ctx):
       str = "8"
@@ -33,6 +36,7 @@ class Fun(commands.Cog):
       else:
         await ctx.reply(ctx.author.mention + "  Avarage is just fine ❤️")
 
+  
     @commands.command(brief = "-> Casually nuke your mate")
     async def nuke(self, ctx, member:discord.Member):
       await ctx.send (f"{ctx.author.mention} just nuked {member.mention}")
@@ -50,7 +54,8 @@ class Fun(commands.Cog):
             return
         await ctx.send(random.choice(all_quotes))
 
-    @commands.command(brief="-> command + <quote> to add a quote to the list")
+  
+    @commands.command(brief='-> command + "quote" to add a quote to the list')
     async def addQuote(self, ctx, quote_):
         def add_quote(quote, file="quotes.json"):
             with open(file, "r+") as fw:
@@ -67,6 +72,41 @@ class Fun(commands.Cog):
         finally:
             add_quote(quote_)
             await ctx.send("Done!")
+
+  
+    @commands.command(brief='-> command + "name" to add a new name to the list')
+    async def addName(self, ctx, name_):
+        def add_name(name, file="lopes.json"):
+            with open(file, "r+") as fw:
+                j = json.load(fw)
+                j["names"].append(name)
+                with open(file, "w+") as wp:
+                    wp.write(json.dumps(j))
+        try:
+            with open("lopes.json", "r"):
+                pass
+        except:
+            with open("lopes.json", "w+") as wp:
+                wp.write('{"names" : []}')
+        finally:
+            add_name(name_)
+            await ctx.send("Done!")
+
+  
+    @commands.command(brief="-> Keep track of the longest nickname in history")
+    async def lopes(self, ctx):
+      try:
+        with open("lopes.json", "r") as r:
+            j = json.load(r)
+            all_names = j["names"]
+            full_name = ""
+            for name in all_names:
+              full_name += str(name) + " "
+      except:
+        await ctx.send("Empty name")
+        return
+      await ctx.send(full_name)
+    
 
 def setup(bot):
     bot.add_cog(Fun(bot))
