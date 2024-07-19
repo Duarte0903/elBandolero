@@ -1,7 +1,7 @@
 # el Bandolero Bot
 
 <p align="left">
-  <img width="300" height="200" src="https://github.com/Duarte0903/elBandolero/blob/main/pics/bandolero.jpg?raw=true">
+  <img width="300" height="200" src="https://github.com/Duarte0903/elBandolero/blob/main/assets/pics/bandolero.jpg?raw=true">
 </p>
 
 Discord Bot made with python for a private server. <br>
