@@ -11,7 +11,7 @@ bando_quote = [
   ]
 
 # Lista de imagens 
-imagens = ["pics/P1.jpeg","pics/P2.jpg","pics/P3.jpg","pics/P4.jpg","pics/P5.png","pics/P6.jpeg"]
+imagens = ["assets/pics/P1.jpeg","assets/pics/P2.jpg","assets/pics/P3.jpg","assets/pics/P4.jpg","assets/pics/P5.png","assets/pics/P6.jpeg"]
 
 # Roleta Russa
 roleta = ['🥳 Dead, press F to pay respects', '😒 Lucky bitch', '😒 Lucky bitch', '😒 Lucky bitch', '😒 Lucky bitch', '😒 Lucky bitch', '🥳 Dead, press F to pay respects']
