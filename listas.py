@@ -15,3 +15,7 @@ imagens = ["pics/P1.jpeg","pics/P2.jpg","pics/P3.jpg","pics/P4.jpg","pics/P5.png
 
 # Roleta Russa
 roleta = ['🥳 Dead, press F to pay respects', '😒 Lucky bitch', '😒 Lucky bitch', '😒 Lucky bitch', '😒 Lucky bitch', '😒 Lucky bitch', '🥳 Dead, press F to pay respects']
+
+racist_words = ["nigga", "nigger", "niggers", "niggers", "niggas", "niggas", "NIGGA", "NIGGAS", "NIGGERS", "NIGGERS", "NIGGER"]
+
+racist_score = {}

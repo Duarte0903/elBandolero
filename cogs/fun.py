@@ -3,6 +3,8 @@ import discord
 from discord.ext import commands
 import random
 import json
+from PIL import Image
+from io import BytesIO
 
 class Fun(commands.Cog):
     def __init__(self, bot):
@@ -49,10 +51,15 @@ class Fun(commands.Cog):
             with open("quotes.json", "r") as r:
                 j = json.load(r)
                 all_quotes = j["quotes"]
-        except:
-            await ctx.send("No quotes stored! Add it using the quotes command")
+        except FileNotFoundError:
+            await ctx.send("No quotes stored! Add them using the addQuote command.")
             return
-        await ctx.send(random.choice(all_quotes))
+    
+        random_quote = random.choice(all_quotes)
+        quote_text = random_quote["quote"]
+    
+        quote_message = f"**{quote_text}**"
+        await ctx.send(quote_message)
 
   
     @commands.command(brief='-> command + "quote" to add a quote to the list')
@@ -60,7 +67,7 @@ class Fun(commands.Cog):
         def add_quote(quote, file="quotes.json"):
             with open(file, "r+") as fw:
                 j = json.load(fw)
-                j["quotes"].append(quote)
+                j["quotes"].append({"quote": quote})
                 with open(file, "w+") as wp:
                     wp.write(json.dumps(j))
         try:
@@ -106,7 +113,59 @@ class Fun(commands.Cog):
         await ctx.send("Empty name")
         return
       await ctx.send(full_name)
+
+
+    @commands.command(brief='-> command + @member to make them gay')
+    async def lgbt(self, ctx, member: discord.Member):
+        avatar_url = member.avatar_url_as(format='png')
+        response = await avatar_url.read()
+        profile_picture = Image.open(BytesIO(response)).convert('RGBA')
     
+        overlay_image = Image.open('assets/lgbt.png').convert('RGBA')
+    
+        overlay_image = overlay_image.resize(profile_picture.size)
+    
+        if profile_picture.mode != 'RGBA':
+            profile_picture = profile_picture.convert('RGBA')
+    
+        opacity = 0.5 
+        overlay_image = overlay_image.copy()
+        overlay_image.putalpha(int(255 * opacity))  
+    
+        merged_image = Image.alpha_composite(profile_picture, overlay_image)
+    
+        result_buffer = BytesIO()
+        merged_image.save(result_buffer, format='PNG')
+        result_buffer.seek(0)
+    
+        await ctx.send(file=discord.File(result_buffer, filename='overlay.png'))
+
+    @commands.command(brief='-> Racist score')
+    async def racistScore(self, ctx): 
+      embed = discord.Embed(
+        title="Racist Score", 
+        color=0xff7b00
+      )
+
+      try:
+        with open('racist_score.json', 'r') as file:
+          racist_scores = json.load(file)
+
+        for member_id, score in racist_scores.items(): 
+          member = ctx.guild.get_member(int(member_id))
+          if member:
+              nickname = member.nick if member.nick else member.display_name
+              embed.add_field(name=f"{nickname}", value=f"N word counter: {score}", inline=False)
+          else:
+              print(f"Member not found for user ID: {member_id}")
+
+        await ctx.send(embed=embed)
+
+      except FileNotFoundError:
+        await ctx.send("Racist score data not found.")
+      except Exception as e:
+        print(f"An error occurred: {str(e)}")
+      
 
 def setup(bot):
     bot.add_cog(Fun(bot))
